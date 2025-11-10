@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/header') %>
+</head>
+<body class="text-center" id="theFirst">
+    <h1 class="bg-primary text-white p-4">Famous Quotes</h1>
+
+    <form id="searchByKeywordForm" action="/searchByKeyword" method="GET">
+        <label>Keyword: <input type="text" name="keyword"></label>
+        <button class="btn btn-success">Search</button>
+        <div id="keywordError" class="text-danger" style="display: none;"><br></div>
+    </form>
+
+    <br><br>
+
+    <form action="/searchByAuthor" method="GET">
+        Author:
+        <select name ="authorId">
+            <% for (row of rows) { %>
+                <option value="<%=row.authorId%>"><%=row.firstName%> <%=row.lastName%></option>
+            <% } %>
+        </select>
+        <button class="btn btn-success">Search</button>
+    </form>
+
+    <br><br>
+
+    <form action="/searchByCategory" method="GET">
+        Category:
+        <select name="category">
+            <% for (col of cols) { %>
+                <option value="<%=col.category%>"><%=col.category%></option>
+            <% } %>
+        </select>
+        <button class="btn btn-success">Search</button>
+    </form>
+
+    <br><br>
+
+    <form action="/seaarchBetweenLikes" method="GET">
+        Likes between:
+        <input type="number" name="min" value="0" min="0" step="1"> and
+        <input type="number" name="max" value="100" min="0" step="1">
+        <button class="btn btn-success">Search</button>
+    </form>
+
+    <br><br>
+
+    <script src="js/home.js"></script>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

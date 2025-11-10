@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/header') %>
+</head>
+<body class="text-center" id="theSecond">
+    <h1 class="bg-primary text-white p-4">Famous Quotes</h1>
+
+    <% for (let row of rows) { %>
+       "<%= row.quote %>" _ Likes: <%= row.likes %>
+       <br>
+        <a class="authors" href="#" authorId="<%= row.authorId %>"> 
+            <%= row.firstName %> <%= row.lastName %>
+        </a>
+        <br><br>
+    <% } %>
+
+    <dialog id="authorModal" style="max-width: 400px;">
+        <div id="authorInfo">
+            <h2 id="authorName"></h2>
+            <img id="authorImage"> <br>
+            <strong><div id="dob"></div> - <div id="dod"></div></strong>
+            <div id="authorSex"></div>
+            ______________________________________________________<br>
+            Born in: <div id="authorBirthplace"></div> 
+            <br> --------------------------------------------------------<br>
+            <div id="authorBio"></div> <br> <br>
+        </div>
+        <button id="closeModal"> Close </button>
+    </dialog>
+
+    <script src="/js/results.js">
+    </script>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
